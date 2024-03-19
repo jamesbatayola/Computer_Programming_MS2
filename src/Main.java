@@ -12,7 +12,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        System.out.println(getEmployeeDetails("1"));
+        print();
 
     }
 
@@ -77,5 +77,22 @@ public class Main {
 
     }
 
+    public static void print() {
+        System.out.println("========== Start of Session ==========");
+        defineDataType();
+
+        while (true) {
+            if(employee.length != 0) {
+                System.out.println("Employee ID: " + employee[0]);
+                System.out.println("Name: " + employee[1] + " " + employee[2]);
+                System.out.println("Position: " + employee[11]);
+                System.out.println("Basic Salary: " + employee[13]);
+            } else {
+                System.out.println("Nothing");
+                break;
+            }
+        }
+
+    }
 
 }
