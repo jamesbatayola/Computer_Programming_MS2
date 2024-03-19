@@ -5,8 +5,12 @@ import java.io.FileReader;
 
 public class Main {
 
+    public String employee_hourly_rate = "";
+    public String employee[];
+
     public static void main(String[] args) {
 
 
     }
+
 }
