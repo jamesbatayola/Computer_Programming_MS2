@@ -1,43 +1,47 @@
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
+import java.io.*;
+import java.util.Arrays;
 
 public class Main {
 
     // Fields
-    public static String employee_hourly_rate;
+    public static String employeeHourlyRate;
     public static String employee[];
 
     public static void main(String[] args) {
-
-
+        System.out.println(getEmployeeDetails("1"));
     }
 
     // This method refreshed the field's data
     public static void refreshData() {
-        employee_hourly_rate = "";
+        employeeHourlyRate = "";
         employee = new String[0];
     }
 
-    public static String getEmployeeDetails(String employee_id) {
+    // This method fetch the employee details
+    public static String getEmployeeDetails(String id) {
 
-        String file = System.getProperty("user.dir") + "/src/Employee_Details.csv";
+        // locate the path of csv file
+        String file = System.getProperty("user.dir") + "/src/employee_details.csv";
 
         BufferedReader reader = null;
         String line = "";
-        String employee_found = "";
+        String employeeSearched = "";
 
         try {
             reader = new BufferedReader(new FileReader(file));
-            while( (line = reader.readLine()) != null) {
+
+            while ((line = reader.readLine()) != null) {
                 String repl = line.replaceAll(",(?!(([^\"]*\"){2})*[^\"]*$)", ";x;");
                 String[] row = repl.split(",");
+                System.out.println(Arrays.toString(row));
             }
+
         } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
             throw new RuntimeException(e);
         }
 
+        return employeeSearched;
     }
-
 }
